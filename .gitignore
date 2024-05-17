@@ -10,6 +10,10 @@
 .svn/
 migrate_working_dir/
 
+# .envをコミットの対象外にする by Rio
+.env
+env
+
 # IntelliJ related
 *.iml
 *.ipr
