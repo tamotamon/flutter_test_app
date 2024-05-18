@@ -5,13 +5,24 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // 20240519_deleta_Vercel.json対応
   // .envファイルを読み込む設定.
-  await dotenv.load(fileName: '.env');
+  // await dotenv.load(fileName: '.env');
+
+  // // Supabaseを初期化. .envファイルからURLとanonKeyを取得して設定.
+  // await Supabase.initialize(
+  //   url: dotenv.get('VAR_URL'),
+  //   anonKey: dotenv.get('VAR_ANONKEY'),
+  // );
   
-  // Supabaseを初期化. .envファイルからURLとanonKeyを取得して設定.
+  // 20240519_add_Vercel.json対応_ビルド時に設定された環境変数を読み込む
+  const varUrl = String.fromEnvironment('VAR_URL');
+  const varAnonKey = String.fromEnvironment('VAR_ANONKEY');
+
+  // Supabaseを初期化
   await Supabase.initialize(
-    url: dotenv.get('VAR_URL'),
-    anonKey: dotenv.get('VAR_ANONKEY'),
+    url: varUrl,
+    anonKey: varAnonKey,
   );
 
   // Flutterアプリを起動.

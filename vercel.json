@@ -1,0 +1,8 @@
+{
+    "build": {
+      "env": {
+        "VAR_URL": "@var_url",
+        "VAR_ANONKEY": "@var_anonkey"
+      }
+    }
+  }
