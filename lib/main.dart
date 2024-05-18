@@ -25,7 +25,7 @@ class FlutterTestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home',
+      title: 'Home333',
       home: const HomePage(),  // ホーム画面としてHomePageを指定.
     );
   }
