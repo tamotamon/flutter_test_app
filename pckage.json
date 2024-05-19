@@ -1,0 +1,6 @@
+{
+    "scripts": {
+      "vercel-build": "flutter build web --release"
+    }
+  }
+  

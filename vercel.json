@@ -1,8 +1,16 @@
 {
-    "build": {
-      "env": {
-        "VAR_URL": "@var_url",
-        "VAR_ANONKEY": "@var_anonkey"
+    "builds": [
+      {
+        "src": "lib/main.dart",
+        "use": "@vercel/flutter",
+        "config": {
+          "distDir": "build/web"
+        }
       }
+    ],
+    "env": {
+      "VAR_URL": "@var_url",
+      "VAR_ANONKEY": "@var_anonkey"
     }
   }
+  

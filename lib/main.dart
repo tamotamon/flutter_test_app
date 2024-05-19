@@ -15,15 +15,30 @@ Future<void> main() async {
   //   anonKey: dotenv.get('VAR_ANONKEY'),
   // );
   
-  // 20240519_add_Vercel.json対応_ビルド時に設定された環境変数を読み込む
-  const varUrl = String.fromEnvironment('VAR_URL');
-  const varAnonKey = String.fromEnvironment('VAR_ANONKEY');
+  // // 20240519_add_Vercel.json対応_ビルド時に設定された環境変数を読み込む
+  // const varUrl = String.fromEnvironment('VAR_URL', defaultValue: '');
+  // const varAnonKey = String.fromEnvironment('VAR_ANONKEY', defaultValue: '');
 
-  // Supabaseを初期化
+  // // Supabaseを初期化
+  // await Supabase.initialize(
+  //   url: varUrl,
+  //   anonKey: varAnonKey,
+  // );
+  // --eof 
+
+  // 20240519_002 add Vecel.json 対応2回目//
+  await dotenv.load();
+
+  // 20240519_002_add_Vercel.json対応_ビルド時に設定された環境変数を読み込む
+  const varUrl = String.fromEnvironment('VAR_URL', defaultValue: '');
+  const varAnonKey = String.fromEnvironment('VAR_ANONKEY', defaultValue: '');
+
+  // 20240519_002_add_Supabaseを初期化
   await Supabase.initialize(
     url: varUrl,
     anonKey: varAnonKey,
   );
+  // 20240519_002_eof
 
   // Flutterアプリを起動.
   runApp(const FlutterTestApp());
@@ -37,7 +52,8 @@ class FlutterTestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home333',
-      home: const HomePage(),  // ホーム画面としてHomePageを指定.
+      // 20240519_002_Vercel.json対応
+      home: const HomePage(varUrl: varUrl, varAnonKey: varAnonKey),  // ホーム画面としてHomePageを指定.
     );
   }
 }
